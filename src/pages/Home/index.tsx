@@ -1,4 +1,6 @@
 import React from 'react';
+import { FiLogIn } from 'react-icons/fi'
+import { Link } from 'react-router-dom'
 import './styles.css';
 
 import logo from '../../assets/logo.svg'
@@ -9,21 +11,21 @@ const Home = () => {
                 <header>
                     <img src={logo} alt='Ecoleta' />
                 </header>
-            </div>
 
-            <main>
-                <h1>Seu marketplace de coleta de resíduos</h1>
-                <p>Ajudamos pessoas a encrontrar pontos d ecoleta de forma eficiente</p>
+                <main>
+                    <h1>Seu marketplace de coleta de resíduos</h1>
+                    <p>Ajudamos pessoas a encrontrar pontos d ecoleta de forma eficiente</p>
 
-                <a href="/cadastro">
-                    <span>
-                        >
-                    </span>
-                    <strong>
-                        Cadastrar
+                    <Link to="/create-point">
+                        <span>
+                            <FiLogIn />
+                        </span>
+                        <strong>
+                            Cadastrar
                     </strong>
-                </a>
-            </main>
+                    </Link>
+                </main>
+            </div>
         </div>
     );
 }
