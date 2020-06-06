@@ -5,6 +5,7 @@ import { Map, TileLayer, Marker } from 'react-leaflet'
 import api from '../../services/api'
 import axios from 'axios'
 import { LeafletMouseEvent } from 'leaflet'
+import Dropzone from '../../components/Dropzone'
 
 import './styles.css';
 
@@ -13,7 +14,7 @@ import logo from '../../assets/logo.svg'
 interface Item {
     id: number
     title: string
-    image_url: string
+    img_url: string
 }
 
 interface IBGEUFResponse {
@@ -27,11 +28,12 @@ const CreatePoint = () => {
     const [items, setItems] = useState<Item[]>([])
     const [ufs, setUfs] = useState<String[]>([])
     const [cities, setCities] = useState<String[]>([])
-    const [selectedUf, setSelectedUf] = useState<String>([])
+    const [selectedUf, setSelectedUf] = useState<String>()
     const [selectedCity, setSelectedCity] = useState<String>('')
     const [selectedPosition, setSelectedPosition] = useState<[number, number]>([0, 0])
+    const [selectedFile, setSelectedFile] = useState<File>()
 
-    const [selectedItems, setSelectedItems] = useState<number[]>([])
+    const [selectedItems, setSelectedItems] = useState<Number[]>([])
     const [name, setName] = useState<String>('')
     const [email, setEmail] = useState('')
     const [whatsapp, setWhatsapp] = useState('')
@@ -63,7 +65,7 @@ const CreatePoint = () => {
     }, [])
 
     useEffect(() => {
-        if (selectedUf === 0) {
+        if (selectedUf === String(0)) {
             return
         }
         axios.get<IBGECityResponse[]>(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${selectedUf}/municipios`)
@@ -91,6 +93,7 @@ const CreatePoint = () => {
     async function handleSubmit (event: FormEvent) {
         event.preventDefault()
 
+        const dataForm = new FormData()
         const data = {
             name,
             email,
@@ -101,12 +104,24 @@ const CreatePoint = () => {
             longitude: selectedPosition[1],
             items: selectedItems
         }
-        await api.post('/points', data)
+        dataForm.append('data', String(data.name))
+        dataForm.append('email', String(data.email))
+        dataForm.append('whatsapp', String(data.whatsapp))
+        dataForm.append('uf', String(data.uf))
+        dataForm.append('city', String(data.city))
+        dataForm.append('latitude', String(data.latitude))
+        dataForm.append('longitude', String(data.longitude))
+        dataForm.append('items', String(data.items))
+
+        if (selectedFile)
+            dataForm.append('image', selectedFile)
+
+        await api.post('/points', dataForm)
 
         history.push('/')
     }
     function handleSelectedItem (id: Number) {
-        if (!selectedItems.includes(id)) {
+        if (!selectedItems.includes(Number(id))) {
             setSelectedItems([...selectedItems, id])
         } else {
             const filteredItems = selectedItems.filter(item => item !== id)
@@ -128,6 +143,8 @@ const CreatePoint = () => {
             <form onSubmit={handleSubmit}>
                 <h1>Cadastro do <br /> ponto de coleta</h1>
                 <fieldset>
+                    <Dropzone onFileUploaded={setSelectedFile} />
+
                     <legend>
                         <h2>Dados</h2>
                     </legend>
@@ -136,7 +153,6 @@ const CreatePoint = () => {
                         <label
                             htmlFor="name">Nome da entidade</label>
                         <input
-                            value={name}
                             onChange={(event: ChangeEvent<HTMLInputElement>) => setName(event.target.value)}
                             type="text"
                             name="name"
@@ -184,20 +200,20 @@ const CreatePoint = () => {
                     <div className="field-group">
                         <div className="field">
                             <label htmlFor="uf">Estados (UF)</label>
-                            <select value={selectedUf} onChange={handleSelectedUf} className="uf" id="uf">
+                            <select onChange={handleSelectedUf} className="uf" id="uf">
                                 <option value="0">Selecione uma UF</option>
                                 {ufs.map(uf => (
-                                    <option key={uf} value={uf} >{uf}</option>
+                                    <option key={String(uf)} value={String(uf)} >{uf}</option>
                                 ))}
                             </select>
                         </div>
 
                         <div className="field">
                             <label htmlFor="city">Cidade</label>
-                            <select value={selectedCity} onChange={handleSelectedCity} className="city" id="city">
+                            <select value={String(selectedCity)} onChange={handleSelectedCity} className="city" id="city">
                                 <option value="0">Selecione uma cidade</option>
                                 {cities.map(city => (
-                                    <option key={city} value={city}>{city}</option>
+                                    <option key={String(city)} value={String(city)}>{city}</option>
                                 ))}
                             </select>
                         </div>
