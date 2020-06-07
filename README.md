@@ -19,12 +19,12 @@ Front-end made with React.js at NextLevel Week by rocketseat. Using geolocation 
 
 ### Home page
 <p align="center">
-  <img src="https://github.com/DanielSoaresRocha/Ecoleta-FrontEnd/blob/master/screenshots/home.png"/>
+  <img src="https://github.com/DanielSoaresRocha/Ecoleta-FrontEnd/blob/master/screenshots/home.png" />
 </p>
 
 ### Upload for point of coleta
 <p align="center">
-  <img src="https://github.com/DanielSoaresRocha/Ecoleta-FrontEnd/blob/master/screenshots/registerUpload.png />
+  <img src="https://github.com/DanielSoaresRocha/Ecoleta-FrontEnd/blob/master/screenshots/registerUpload.png" />
 </p>
 
 ### Geolocation
