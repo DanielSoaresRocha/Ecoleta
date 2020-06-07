@@ -18,13 +18,19 @@ Front-end made with React.js at NextLevel Week by rocketseat. Using geolocation 
 # Demonstration
 
 ### Home page
-![home page](https://github.com/DanielSoaresRocha/Ecoleta-FrontEnd/blob/master/screenshots/home.png)
+<p align="center">
+  <img src="https://github.com/DanielSoaresRocha/Ecoleta-FrontEnd/blob/master/screenshots/home.png"/>
+</p>
 
 ### Upload for point of coleta
-![register page](https://github.com/DanielSoaresRocha/Ecoleta-FrontEnd/blob/master/screenshots/registerUpload.png)
+<p align="center">
+  <img src="https://github.com/DanielSoaresRocha/Ecoleta-FrontEnd/blob/master/screenshots/registerUpload.png />
+</p>
 
 ### Geolocation
-![register page](https://github.com/DanielSoaresRocha/Ecoleta-FrontEnd/blob/master/screenshots/registerMap.png)
+<p align="center">
+  <img src="https://github.com/DanielSoaresRocha/Ecoleta-FrontEnd/blob/master/screenshots/registerMap.png" />
+</p>
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
