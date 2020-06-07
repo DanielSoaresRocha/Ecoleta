@@ -16,19 +16,18 @@ Front-end made with React.js at NextLevel Week by rocketseat. Using geolocation 
 - React with typeScript
 
 # Demonstration
-
+<h3 align="center"> Home page </h3>
 <p align="center">
-  <h3 align="center"> Home page </h3>
   <img src="https://github.com/DanielSoaresRocha/Ecoleta-FrontEnd/blob/master/screenshots/home.png" />
 </p>
 
+ <h3 align="center"> Upload for point of coleta </h3>
 <p align="center">
-  <h3 align="center"> Upload for point of coleta </h3>
   <img src="https://github.com/DanielSoaresRocha/Ecoleta-FrontEnd/blob/master/screenshots/registerUpload.png" />
 </p>
 
+<h3 align="center"> Geolocation </h3>
 <p align="center">
-  <h3 align="center"> Geolocation </h3>
   <img src="https://github.com/DanielSoaresRocha/Ecoleta-FrontEnd/blob/master/screenshots/registerMap.png" />
 </p>
 
