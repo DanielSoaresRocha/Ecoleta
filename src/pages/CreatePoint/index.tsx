@@ -142,8 +142,8 @@ const CreatePoint = () => {
 
             <form onSubmit={handleSubmit}>
                 <h1>Cadastro do <br /> ponto de coleta</h1>
+                <Dropzone onFileUploaded={setSelectedFile} />
                 <fieldset>
-                    <Dropzone onFileUploaded={setSelectedFile} />
 
                     <legend>
                         <h2>Dados</h2>

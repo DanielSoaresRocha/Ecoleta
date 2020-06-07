@@ -14,7 +14,7 @@ const Home = () => {
 
                 <main>
                     <h1>Seu marketplace de coleta de resíduos</h1>
-                    <p>Ajudamos pessoas a encrontrar pontos d ecoleta de forma eficiente</p>
+                    <p>Ajudamos pessoas a encrontrar pontos de coleta de forma eficiente</p>
 
                     <Link to="/create-point">
                         <span>
